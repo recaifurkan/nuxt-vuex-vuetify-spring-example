@@ -80,6 +80,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
+  middleware: ["auth"],
   data: () => ({
     dialogType: "",
     dialog: false,
@@ -151,11 +152,11 @@ export default {
       this.closeDialog();
     }
   },
-  async mounted() {},
-
-  async fetch() {
+  async mounted() {
     await this.setBooks();
   },
+
+  async fetch() {},
 
   async asyncData() {}
 };

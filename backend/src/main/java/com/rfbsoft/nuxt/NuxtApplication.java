@@ -1,21 +1,30 @@
 package com.rfbsoft.nuxt;
 
 import com.rfbsoft.nuxt.entities.Book;
+import com.rfbsoft.nuxt.entities.Role;
+import com.rfbsoft.nuxt.entities.User;
 import com.rfbsoft.nuxt.repositories.BookRepository;
+import com.rfbsoft.nuxt.services.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 @SpringBootApplication
 public class NuxtApplication {
+
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(NuxtApplication.class, args);
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository bookRepository) {
+	public CommandLineRunner bookDemo(BookRepository bookRepository , UserService userService) {
 		return (args) -> {
 
 			// create books
@@ -72,7 +81,37 @@ public class NuxtApplication {
 
 			// delete all books
 //			bookRepository.deleteAll();
+
+
+
+			User admin = new User();
+			admin.setUsername("admin");
+			admin.setPassword("admin");
+			admin.setEmail("admin@email.com");
+			admin.setRoles(new ArrayList<Role>(Arrays.asList(Role.ROLE_ADMIN)));
+
+			userService.signup(admin);
+
+			User client = new User();
+			client.setUsername("client");
+			client.setPassword("client1234");
+			client.setEmail("client@email.com");
+			client.setRoles(new ArrayList<Role>(Arrays.asList(Role.ROLE_CLIENT)));
+
+			userService.signup(client);
+
+
 		};
 	}
+
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
+
+
+
+
+
 
 }

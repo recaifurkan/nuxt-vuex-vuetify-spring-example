@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 6000)
 @RestController()
+//@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping(BookController.CONTROLLER_PATH)
 public class BookController {
     public static final String CONTROLLER_PATH = "/books";
@@ -37,6 +38,7 @@ public class BookController {
     }
 
 
+
     @PutMapping("/{id}")
     ResponseEntity update(@PathVariable(name = "id") Long id, @RequestBody Book book) {
 
@@ -53,6 +55,7 @@ public class BookController {
 
 
     }
+
 
 
     @DeleteMapping("/{id}")

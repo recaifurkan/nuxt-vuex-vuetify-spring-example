@@ -6,6 +6,12 @@
         {{ title }}
       </v-toolbar-title>
       <v-spacer />
+      <v-btn @click="$router.push('/')">
+        Anasayfa
+      </v-btn>
+      <v-btn @click="$router.push('/books')">
+        Kitaplar
+      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
