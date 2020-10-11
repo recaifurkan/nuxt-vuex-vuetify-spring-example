@@ -5,7 +5,7 @@
       color="green lighten-3"
       class="text-center"
     >
-      Log in or register to access {{ $route.query.redirect }}.
+      {{ $t("auth.loginOrRegister") }} {{ $route.query.redirect }}.
     </v-sheet>
     <UserAuthTogglableForm
       loginPhrase="Login"

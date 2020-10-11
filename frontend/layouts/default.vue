@@ -7,10 +7,10 @@
       </v-toolbar-title>
       <v-spacer />
       <v-btn @click="$router.push('/')">
-        Anasayfa
+        {{ $t("layout.homepage") }}
       </v-btn>
       <v-btn @click="$router.push('/books')">
-        Kitaplar
+        {{ $t("layout.books") }}
       </v-btn>
     </v-app-bar>
     <v-main>

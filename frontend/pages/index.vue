@@ -1,17 +1,17 @@
 <template>
   <div>
-    Hello
+    {{ $t("welcome") }}
 
     <div v-if="$auth.loggedIn">
       <span>{{ $auth.user.username }} - {{ $auth.user.email }}</span>
 
       <v-btn @click="$auth.logout()">
-        Çıkış yap
+        {{ $t("logout") }}
       </v-btn>
     </div>
 
     <v-btn v-else @click="$router.push('/auth')">
-      Giriş Yap
+      {{ $t("login") }}
     </v-btn>
   </div>
 </template>

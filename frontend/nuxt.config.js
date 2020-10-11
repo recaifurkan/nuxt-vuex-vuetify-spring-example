@@ -1,10 +1,13 @@
 import colors from "vuetify/es5/util/colors";
+import i18n from "./i18n";
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   router: {
     middleware: []
   },
+
+  // plugins: ["plugins/i18n"],
   head: {
     titleTemplate: "%s - test",
     title: "test",
@@ -29,7 +32,8 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ["@nuxtjs/axios", "@nuxtjs/auth"],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth", ["nuxt-i18n", i18n]],
+
   auth: {
     redirect: {
       login: "/auth",

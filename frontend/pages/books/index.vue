@@ -2,9 +2,9 @@
   <div>
     <v-card max-width="450" class="mx-auto">
       <v-toolbar color="cyan" dark>
-        <v-toolbar-title>Kitaplar</v-toolbar-title>
+        <v-toolbar-title>{{ $t("book.books") }}</v-toolbar-title>
         <v-btn @click="openNew" block>
-          Yeni ekle
+          {{ $t("book.createBook") }}
         </v-btn>
 
         <v-spacer></v-spacer>
@@ -32,7 +32,12 @@
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>
           <v-card-title>
-            <span class="headline">Yeni Kitap Ekle</span>
+            <span class="headline">
+              <span v-if="dialogType == 'new'">
+                {{ $t("book.createBook") }}</span
+              >
+              <span v-else> {{ $t("book.updateBook") }}</span>
+            </span>
           </v-card-title>
           <v-card-text>
             <v-container>
@@ -64,10 +69,10 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="blue darken-1" text @click="closeDialog">
-              Kapat
+              {{ $t("close") }}
             </v-btn>
             <v-btn color="blue darken-1" text @click="processBook">
-              Kaydet
+              {{ $t("save") }}
             </v-btn>
           </v-card-actions>
         </v-card>
