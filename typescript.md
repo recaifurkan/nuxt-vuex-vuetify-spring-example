@@ -10,7 +10,19 @@ You probably don't wanna use ts-node, because it is slow, instead follow followi
 
     Then in your package.json, add the following 2 scripts:
 
-    "scripts":  { "watch":  "tsc -w", "dev":  "nodemon dist/index.js" },
+    {
+  "name": "whatsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -w",
+    "dev": "tsc -w & nodemon dist/index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
 
     Then use:
 
